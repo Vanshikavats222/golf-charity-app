@@ -1,65 +1,70 @@
-import Image from "next/image";
+"use client";
+import ScoreBoard from './Components/ScoreBoard';
+import CharityList from './Components/CharityList';
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <main style={{ backgroundColor: '#000', minHeight: '100vh', padding: '40px 20px', color: '#fff', fontFamily: 'sans-serif' }}>
+      
+      {/* Header with Subscription Status */}
+      <div style={{ maxWidth: '900px', margin: '0 auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '40px' }}>
+        <div>
+          <h1 style={{ fontSize: '32px', margin: 0, color: '#4ade80' }}>Golf Hero Dashboard</h1>
+          <p style={{ color: '#71717a', margin: '5px 0' }}>Welcome back, Champion!</p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+        <div style={{ backgroundColor: 'rgba(74, 222, 128, 0.1)', border: '1px solid #4ade80', padding: '8px 15px', borderRadius: '20px' }}>
+          <span style={{ color: '#4ade80', fontSize: '14px', fontWeight: 'bold' }}>● Premium Member (Yearly)</span>
         </div>
-      </main>
-    </div>
+      </div>
+
+      <div style={{ maxWidth: '900px', margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 1.5fr', gap: '30px' }}>
+        
+        {/* Left Column: Stats & Draw */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '30px' }}>
+          
+          {/* PRD Draw Engine Section */}
+          <div style={{ backgroundColor: '#111', padding: '20px', borderRadius: '15px', border: '1px solid #333' }}>
+            <h3 style={{ color: '#4ade80', marginTop: 0 }}>Next Monthly Draw</h3>
+            <div style={{ fontSize: '24px', fontWeight: 'bold', margin: '10px 0' }}>£500 Golf Voucher</div>
+            <p style={{ color: '#71717a', fontSize: '14px' }}>Date: 15th April 2026</p>
+            <div style={{ width: '100%', height: '8px', backgroundColor: '#222', borderRadius: '4px', marginTop: '10px' }}>
+              <div style={{ width: '65%', height: '100%', backgroundColor: '#4ade80', borderRadius: '4px' }}></div>
+            </div>
+            <p style={{ fontSize: '12px', color: '#4ade80', marginTop: '5px' }}>65% entries filled</p>
+          </div>
+
+          {/* Admin Stats Preview */}
+          <div style={{ backgroundColor: '#111', padding: '20px', borderRadius: '15px', border: '1px solid #333' }}>
+            <h4 style={{ margin: 0, color: '#71717a' }}>Community Impact</h4>
+            <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '15px' }}>
+              <div>
+                <div style={{ fontSize: '18px', fontWeight: 'bold' }}>1,240</div>
+                <div style={{ fontSize: '11px', color: '#71717a' }}>Total Members</div>
+              </div>
+              <div>
+                <div style={{ fontSize: '18px', fontWeight: 'bold' }}>£5,420</div>
+                <div style={{ fontSize: '11px', color: '#71717a' }}>Charity Raised</div>
+              </div>
+            </div>
+          </div>
+
+          <CharityList />
+        </div>
+
+        {/* Right Column: Scoreboard */}
+        <div>
+          <ScoreBoard />
+          <div style={{ marginTop: '20px', padding: '15px', backgroundColor: 'rgba(255,255,255,0.02)', borderRadius: '10px', fontSize: '13px', color: '#71717a' }}>
+            ℹ️ PRD Compliance: Scores are stored in Stableford format (1-45 range) and linked to your unique User ID.
+          </div>
+        </div>
+
+      </div>
+
+      {/* Footer / Admin Link */}
+      <footer style={{ maxWidth: '900px', margin: '60px auto 0', textAlign: 'center', borderTop: '1px solid #222', paddingTop: '20px' }}>
+        <a href="/ABC" style={{ color: '#444', textDecoration: 'none', fontSize: '12px' }}>Admin Portal Access</a>
+      </footer>
+    </main>
   );
 }
